@@ -1,0 +1,3 @@
+from contacts.classes.Field import Field
+class Address(Field):
+    ...

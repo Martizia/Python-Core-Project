@@ -1,0 +1,23 @@
+{
+    "Call_General_C.Brown": {
+        "task": "Call_General_C.Brown",
+        "begin date": "2023-11-25",
+        "end date": "2023-11-30",
+        "status": "Done",
+        "tags": [
+            "call",
+            "general",
+            "USA"
+        ]
+    },
+    "Call_Mark_Milley": {
+        "task": "Call_Mark_Milley",
+        "begin date": "2023-12-17",
+        "end date": "2023-12-28",
+        "status": "In_progress",
+        "tags": [
+            "call",
+            "USA"
+        ]
+    }
+}

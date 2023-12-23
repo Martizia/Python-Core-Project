@@ -1,0 +1,25 @@
+{
+    "Grande": {
+        "title": "Grande",
+        "notes": [
+            "Bread Salt Coffee Wine Chips Cheese",
+            "Beer Amaretto Capricciosa"
+        ]
+    },
+    "make_a_plan": {
+        "title": "make_a_plan",
+        "notes": [
+            "Berlin",
+            "Parish"
+        ]
+    },
+    "Visit_mother": {
+        "title": "Visit_mother",
+        "notes": [
+            "Flowers",
+            "cake",
+            "vitamin 50+",
+            "make_a_surprise"
+        ]
+    }
+}

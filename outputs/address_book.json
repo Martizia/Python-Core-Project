@@ -1,0 +1,211 @@
+{
+    "John-Doe": {
+        "name": "John-Doe",
+        "phones": [
+            "1234567890"
+        ],
+        "birthday": "1990-05-15",
+        "email": "john.doe@example.com",
+        "address": "Belgie, Brussel, Stationstraat, 35/2",
+        "status": "work",
+        "note": "I have debt $150"
+    },
+    "Jane-Smith": {
+        "name": "Jane-Smith",
+        "phones": [
+            "9876543210"
+        ],
+        "birthday": "1985-09-20",
+        "email": "jane.smith@example.com",
+        "address": "Germany, Berlin, Doichestrasse, 7/3",
+        "status": "friends",
+        "note": "She has to come 31/12/2023"
+    },
+    "Alice-Johnson": {
+        "name": "Alice-Johnson",
+        "phones": [
+            "5551234567"
+        ],
+        "birthday": "1992-03-10",
+        "email": "alice.johnson@example.com",
+        "address": "USA, New York, Broadway, 12/5",
+        "status": "family",
+        "note": "Planning a family reunion"
+    },
+    "Bob-Williams": {
+        "name": "Bob-Williams",
+        "phones": [
+            "9998887777"
+        ],
+        "birthday": "1980-11-25",
+        "email": "bob.williams@example.com",
+        "address": "Canada, Toronto, Maple Street, 8/1",
+        "status": "work",
+        "note": "Discuss project updates"
+    },
+    "Eva-Davis": {
+        "name": "Eva-Davis",
+        "phones": [
+            "1112223333"
+        ],
+        "birthday": "1988-07-08",
+        "email": "eva.davis@example.com",
+        "address": "France, Paris, Rue de la Paix, 15/4",
+        "status": "neighbor",
+        "note": "Borrowed a book"
+    },
+    "Michael-Lee": {
+        "name": "Michael-Lee",
+        "phones": [
+            "7778889999"
+        ],
+        "birthday": "1995-01-30",
+        "email": "michael.lee@example.com",
+        "address": "Australia, Sydney, King Street, 22/7",
+        "status": "classmate",
+        "note": "Class reunion soon"
+    },
+    "Sophie-Miller": {
+        "name": "Sophie-Miller",
+        "phones": [
+            "4445556666"
+        ],
+        "birthday": "1987-12-18",
+        "email": "sophie.miller@example.com",
+        "address": "Spain, Madrid, Calle de Alcala, 10/3",
+        "status": "friends",
+        "note": "Loves hiking"
+    },
+    "David-Brown": {
+        "name": "David-Brown",
+        "phones": [
+            "6667778888"
+        ],
+        "birthday": "1983-04-05",
+        "email": "david.brown@example.com",
+        "address": "Italy, Rome, Via Veneto, 5/1",
+        "status": "colleague",
+        "note": "Discuss budget report"
+    },
+    "Olivia-White": {
+        "name": "Olivia-White",
+        "phones": [
+            "2223334444"
+        ],
+        "birthday": "1998-09-12",
+        "email": "olivia.white@example.com",
+        "address": "Japan, Tokyo, Ginza, 18/6",
+        "status": "friends",
+        "note": "Movie night this weekend"
+    },
+    "Daniel-Taylor": {
+        "name": "Daniel-Taylor",
+        "phones": [
+            "8889990000"
+        ],
+        "birthday": "1986-06-25",
+        "email": "daniel.taylor@example.com",
+        "address": "Brazil, Rio de Janeiro, Copacabana, 25/8",
+        "status": "neighbor",
+        "note": "Shared gardening tips"
+    },
+    "Isabella-Rodriguez": {
+        "name": "Isabella-Rodriguez",
+        "phones": [
+            "3334445555"
+        ],
+        "birthday": "1994-02-28",
+        "email": "isabella.rodriguez@example.com",
+        "address": "Canada, Vancouver, Granville Street, 14/3",
+        "status": "classmate",
+        "note": "Study group tomorrow"
+    },
+    "William-Wall": {
+        "name": "William-Wall",
+        "phones": [
+            "5556667777"
+        ],
+        "birthday": "1999-01-01",
+        "email": "william.wall@example.com",
+        "address": "Germany, Munich, Marienplatz, 30/9",
+        "status": "family",
+        "note": "Planning a trip"
+    },
+    "Ava-Garcia": {
+        "name": "Ava-Garcia",
+        "phones": [
+            "1112223333"
+        ],
+        "birthday": "1997-07-14",
+        "email": "ava.garcia@example.com",
+        "address": "USA, Los Angeles, Hollywood Blvd, 9/2",
+        "status": "colleague",
+        "note": "Coffee meeting next week"
+    },
+    "Henry-King": {
+        "name": "Henry-King",
+        "phones": [
+            "7778889999"
+        ],
+        "birthday": "1984-03-19",
+        "email": "henry.king@example.com",
+        "address": "France, Nice, Promenade des Anglais, 22/4",
+        "status": "friends",
+        "note": "Sports event on Saturday"
+    },
+    "Emily-Moore": {
+        "name": "Emily-Moore",
+        "phones": [
+            "4445556666"
+        ],
+        "birthday": "1993-10-03",
+        "email": "emily.moore@example.com",
+        "address": "Australia, Melbourne, Collins Street, 15/7",
+        "status": "neighbor",
+        "note": "Received a package for you"
+    },
+    "Christopher-Young": {
+        "name": "Christopher-Young",
+        "phones": [
+            "6667778888"
+        ],
+        "birthday": "1982-05-22",
+        "email": "christopher.young@example.com",
+        "address": "Spain, Barcelona, La Rambla, 10/5",
+        "status": "colleague",
+        "note": "Meeting at 2 PM"
+    },
+    "Sophia-Cooper": {
+        "name": "Sophia-Cooper",
+        "phones": [
+            "2223334444"
+        ],
+        "birthday": "1996-09-08",
+        "email": "sophia.cooper@example.com",
+        "address": "Italy, Florence, Piazza della Signoria, 5/3",
+        "status": "friends",
+        "note": "Birthday surprise party"
+    },
+    "Sergio": {
+        "name": "Sergio",
+        "phones": [
+            "0460227020"
+        ],
+        "birthday": "1970-12-31",
+        "email": "sergio@examples.com",
+        "address": null,
+        "status": null,
+        "note": null
+    },
+    "Vasilii": {
+        "name": "Vasilii",
+        "phones": [
+            "1234567890"
+        ],
+        "birthday": null,
+        "email": null,
+        "address": "Danmark 8600 S\u00f8ndergade 15",
+        "status": null,
+        "note": null
+    }
+}
