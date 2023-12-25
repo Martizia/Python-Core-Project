@@ -1,0 +1,12 @@
+{
+    "Kate": {
+        "contact": "Kate",
+        "phones": [
+            "88888888",
+            "66565555"
+        ],
+        "birthday": "31.12.1990",
+        "email": "kate@gmail.com",
+        "address": "Zaporizhzhia, Sobornyi 156"
+    }
+}

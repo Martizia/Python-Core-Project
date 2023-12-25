@@ -52,10 +52,10 @@ class Birthday(Field):
             if value:
                 self.value = value
             else:
-                self.value = input("Birthday date(dd/mm/YYYY): ")
+                self.value = input("Birthday date(dd.mm.YYYY): ")
             try:
-                if datetime.strptime(value, '%d/%m/%Y'):
-                    date_value = datetime.strptime(self.value.strip(), '%d/%m/%Y')
+                if datetime.strptime(value, '%d.%m.%Y'):
+                    date_value = datetime.strptime(self.value.strip(), '%d.%m.%Y')
                     self.value = datetime.strftime(date_value, '%d.%m.%Y')
                     break
                 elif self.value == '':
@@ -98,9 +98,9 @@ class Address(Field):
 
 
 class Contact:
-    def __init__(self, name, birthday='', email='', address=''):
+    def __init__(self, name, phone, birthday='', email='', address=''):
         self.name = Name(name)
-        self.phones = []
+        self.phones = Phone(phone)
         self.birthday = Birthday(birthday) if birthday else None
         self.email = Email(email) if email else None
         self.address = Address(address) if address else None
@@ -134,7 +134,7 @@ class Contact:
     def days_to_birthday(self):
         today = datetime.now()
         if self.birthday:
-            birthday_date = datetime.strptime(str(self.birthday), '%d/%m/%Y').replace(year=today.year)
+            birthday_date = datetime.strptime(str(self.birthday), '%d.%m.%Y').replace(year=today.year)
             if today > birthday_date:
                 birthday_date = birthday_date.replace(year=today.year + 1)
             delta = birthday_date - today
@@ -146,4 +146,8 @@ class Contact:
         self.birthday = Birthday(value)
 
     def __str__(self):
-        return f"Contact name: {self.name.value}, phones: {', '.join(p for p in self.phones.value)}, birthday is {self.birthday}"
+        return (f"Contact name: {self.name.value}, "
+                f"phones: {', '.join(p for p in self.phones.value)}, "
+                f"birthday is {self.birthday}, "
+                f"email: {self.email}, "
+                f"address: {self.address}")
