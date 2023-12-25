@@ -8,5 +8,14 @@
         "birthday": "31.12.1990",
         "email": "kate@gmail.com",
         "address": "Zaporizhzhia, Sobornyi 156"
+    },
+    "ggggg": {
+        "contact": "ggggg",
+        "phones": [
+            "75757575"
+        ],
+        "birthday": "10.04.1980",
+        "email": "gggg@i.ua",
+        "address": "jjfjfjf"
     }
 }

@@ -24,7 +24,6 @@ class ContactBook(UserDict):
         return serializable_data
 
     def save_contacts_to_json_file(self, filename):
-        # filename = "Output/contacts.json"
         data_to_serialize = self.convert_to_serializable_contact()
         try:
             with open(filename, "w", encoding="utf-8") as json_file:
@@ -34,7 +33,7 @@ class ContactBook(UserDict):
         except Exception as e:
             print(f'Error saving contacts to {filename}: {e}')
 
-    def load_contacts_from_json_file(self, filename):
+    def load_contacts_from_json_file(filename):
         try:
             with open(filename, "r", encoding="utf-8") as json_file:
                 data = json.load(json_file)
