@@ -21,7 +21,7 @@ class Bot:
                 self.contacts_from_file.add_contact(contact)
                 self.contacts_from_file.save_contacts_to_json_file("Output/contacts.json")
             elif action_contact == 2:
-                pass
+                self.contacts_from_file.edit_contact()
             elif action_contact == 3:
                 self.contacts_from_file.find_contact()
             elif action_contact == 4:

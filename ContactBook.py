@@ -1,9 +1,10 @@
-from Contacts import Contact
+from Contacts import Contact, Birthday, Address
 from collections import UserDict
 import json
 from rich.table import Table
 from rich.console import Console
 from datetime import datetime
+from  dashtable import data2rst
 
 
 class ContactBook(UserDict):
@@ -73,39 +74,55 @@ class ContactBook(UserDict):
         except ValueError:
             print("Invalid input. Please enter a valid info for search.")
 
-    # def edit_todo(self):
-    #     try:
-    #         dict_with_number = self.search_todo()
-    #         choice = int(input('Please choose task number to edit: '))
-    #         for key, value in dict_with_number.items():
-    #             if key == choice:
-    #                 task_for_edit = self.data[value]
-    #                 part_of_task_to_edit = input("Please choose field to edit (title/begin/end/status/tags): ")
-    #                 if part_of_task_to_edit == 'title':
-    #                     new_title = input("Enter new task title: ")
-    #                     self.data[new_title] = self.data[task_for_edit.task]
-    #                     del self.data[task_for_edit.task]
-    #                     task_for_edit.task = new_title
-    #                 elif part_of_task_to_edit == 'begin':
-    #                     new_begin = input("Enter new begin date: ")
-    #                     task_for_edit.begin = new_begin
-    #                 elif part_of_task_to_edit == 'end':
-    #                     new_end = input("Enter new end date: ")
-    #                     task_for_edit.end = new_end
-    #                 elif part_of_task_to_edit == 'status':
-    #                     new_status = input("Enter new status (Done/In_progress): ")
-    #                     task_for_edit.status = new_status
-    #                 elif part_of_task_to_edit == 'tags':
-    #                     old_tag = input("Enter tag to edit: ")
-    #                     new_tag = input("Enter new tag: ")
-    #                     for tag in task_for_edit.tags:
-    #                         if tag == old_tag:
-    #                             task_for_edit.tags.remove(old_tag)
-    #                             task_for_edit.tags.append(new_tag)
-    #         self.save_to_file_todo('outputs/todo.json')
-    #     except ValueError:
-    #         print("Invalid input. Please enter a valid number.")
-    #
+    def edit_contact(contacts_from_file):
+        try:
+            dict_with_number = contacts_from_file.find_contact()
+            choice = int(input("Please choose contact to edit: "))
+            for key, value in dict_with_number.items():
+                if key == choice:
+                    contact_for_edit = contacts_from_file[value]
+                    table = [["1. Name", "2. Edit phone", "3. Delete phone", "4. Birthday", "5. Address", "6. Return"]]
+                    print(data2rst(table))
+                    part_of_contact_to_edit = int(input("Please choose field to edit: "))
+                    if part_of_contact_to_edit == 1:
+                        new_name = input("Enter new contact name: ")
+                        contacts_from_file[new_name] = contacts_from_file[contact_for_edit.name.value]
+                        del contacts_from_file[contact_for_edit.name.value]
+                        contact_for_edit.name.value = new_name
+                    elif part_of_contact_to_edit == 2:
+                        old_phone = input("Enter old phone number: ")
+                        new_phone = input("Enter new phone number: ")
+                        contacts_from_file.edit_phone(contact_for_edit, old_phone, new_phone)
+                    elif part_of_contact_to_edit == 3:
+                        phone_to_delete = input("Enter phone to delete: ")
+                        contacts_from_file.delete_phone(contact_for_edit, phone_to_delete)
+                    elif part_of_contact_to_edit == 4:
+                        new_birthday = input("Enter new Birthday date: ")
+                        contact_for_edit.birthday = Birthday(new_birthday)
+                    elif part_of_contact_to_edit == 5:
+                        new_address = input("Enter new address: ")
+                        contact_for_edit.address = Address(new_address)
+            contacts_from_file.save_contacts_to_json_file("Output/contacts.json")
+        except ValueError:
+            print("Invalid input. Please enter a valid number.")
+
+
+    def edit_phone(contacts_from_file, phones, old_phone, new_phone):
+        is_found_old_phone = False
+        for i, p in enumerate(phones.phones.value):
+            if p == old_phone:
+                phones.phones.value[i] = new_phone
+                is_found_old_phone = True
+        if not is_found_old_phone:
+            raise ValueError('Phone not found')
+
+
+    def delete_phone(contacts_from_file, phones, phone_to_delete):
+        for p in phones.phones.value:
+            if p == phone_to_delete:
+                phones.phones.value.remove(phone_to_delete)
+
+
     def delete_contact(contacts_from_file):
         try:
             dict_with_number = contacts_from_file.find_contact()
@@ -120,12 +137,12 @@ class ContactBook(UserDict):
     def show_all_contacts(contacts_from_file):
         console = Console()
 
-        table = Table(title="Contact List")
-        table.add_column("Name", style="#5cd15a", justify="center", min_width=10, max_width=50)
-        table.add_column("Phones", style="#5cd15a", justify="center", min_width=10, max_width=50)
-        table.add_column("Birthday", style="#5cd15a", justify="center", min_width=10, max_width=50)
-        table.add_column("Email", style="#5cd15a", justify="center", min_width=10, max_width=50)
-        table.add_column("Address", style="#5cd15a", justify="center", min_width=10, max_width=50)
+        table = Table(title="Contact List", style="#e3db4b", header_style="#4bb0e3", title_style="#e3db4b")
+        table.add_column("Name", style="#4bb0e3", min_width=10, max_width=50)
+        table.add_column("Phones", style="#4bb0e3", min_width=10, max_width=50)
+        table.add_column("Birthday", style="#4bb0e3", justify="center", min_width=10, max_width=50)
+        table.add_column("Email", style="#4bb0e3", min_width=10, max_width=50)
+        table.add_column("Address", style="#4bb0e3", min_width=10, max_width=50)
         list_contacts = []
         for key, value in contacts_from_file.data.items():
             name_c = value.name.value

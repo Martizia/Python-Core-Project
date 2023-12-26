@@ -106,31 +106,11 @@ class Contact:
         self.address = Address(address) if address else None
 
     def add_phone(self, phone):
-        # if not isinstance(phone, Phone):
-        #     phone = Phone(phone)
         self.phones = Phone(phone)
 
 
-    # def edit_phone(self, old_phone, new_phone):
-    #     is_found_old_phone = False
-    #     for i, p in enumerate(self.phones):
-    #         if p.value == old_phone:
-    #             self.phones[i] = Phone(new_phone)
-    #             is_found_old_phone = True
-    #     if not is_found_old_phone:
-    #         raise ValueError('Phone not found')
-    #
-    # def remove_phone(self, phone):
-    #     for p in self.phones:
-    #         if p.value == phone:
-    #             self.phones.remove(p)
-    #     return self.phones
-
-
-
-
-    def add_birthday(self, value):
-        self.birthday = Birthday(value)
+    # def add_birthday(self, value):
+    #     self.birthday = Birthday(value)
 
     def __str__(self):
         return (f"Contact name: {self.name.value}, "

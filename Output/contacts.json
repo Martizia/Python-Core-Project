@@ -1,21 +1,12 @@
 {
-    "Kate": {
-        "contact": "Kate",
+    "Olga Smith": {
+        "contact": "Olga Smith",
         "phones": [
-            "88888888",
-            "66565555"
+            "77777",
+            "00000"
         ],
-        "birthday": "31.12.1990",
-        "email": "kate@gmail.com",
-        "address": "Zaporizhzhia, Sobornyi 156"
-    },
-    "Olga": {
-        "contact": "Olga",
-        "phones": [
-            "0967776543"
-        ],
-        "birthday": "08.05.1980",
+        "birthday": "03.03.1980",
         "email": "olga@gmail.com",
-        "address": "Kyiv"
+        "address": "Zaporizhzhia"
     }
 }
