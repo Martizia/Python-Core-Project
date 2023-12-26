@@ -1,6 +1,9 @@
 from Contacts import Contact
 from collections import UserDict
 import json
+from rich.table import Table
+from rich.console import Console
+from datetime import datetime
 
 
 class ContactBook(UserDict):
@@ -52,6 +55,106 @@ class ContactBook(UserDict):
             print(f'Error loading from {filename}: {e}')
             return ContactBook()  # Return a new instance in case of an error
 
+    def find_contact(contacts_from_file):
+        try:
+            search_info = input("Enter info for search: ").lower()
+            result_list = []
+            for item in contacts_from_file.values():
+                search_by_name = item.name.value.lower().find(search_info)
+                search_by_phones = str([phone.lower() for phone in item.phones.value]).find(search_info)
+                search_by_birthday = str(item.birthday).find(search_info)
+                search_by_email = item.email.value.lower().find(search_info)
+                search_by_address = item.address.value.lower().find(search_info)
+                if search_by_name > -1 or search_by_phones > -1 or search_by_birthday > -1 or search_by_email > -1 or search_by_address > -1:
+                    result_list.append(item)
+            dict_with_number = dict(zip([i + 1 for i in range(len(result_list))], [i.name.value for i in result_list]))
+            print(dict_with_number)
+            return dict_with_number
+        except ValueError:
+            print("Invalid input. Please enter a valid info for search.")
+
+    # def edit_todo(self):
+    #     try:
+    #         dict_with_number = self.search_todo()
+    #         choice = int(input('Please choose task number to edit: '))
+    #         for key, value in dict_with_number.items():
+    #             if key == choice:
+    #                 task_for_edit = self.data[value]
+    #                 part_of_task_to_edit = input("Please choose field to edit (title/begin/end/status/tags): ")
+    #                 if part_of_task_to_edit == 'title':
+    #                     new_title = input("Enter new task title: ")
+    #                     self.data[new_title] = self.data[task_for_edit.task]
+    #                     del self.data[task_for_edit.task]
+    #                     task_for_edit.task = new_title
+    #                 elif part_of_task_to_edit == 'begin':
+    #                     new_begin = input("Enter new begin date: ")
+    #                     task_for_edit.begin = new_begin
+    #                 elif part_of_task_to_edit == 'end':
+    #                     new_end = input("Enter new end date: ")
+    #                     task_for_edit.end = new_end
+    #                 elif part_of_task_to_edit == 'status':
+    #                     new_status = input("Enter new status (Done/In_progress): ")
+    #                     task_for_edit.status = new_status
+    #                 elif part_of_task_to_edit == 'tags':
+    #                     old_tag = input("Enter tag to edit: ")
+    #                     new_tag = input("Enter new tag: ")
+    #                     for tag in task_for_edit.tags:
+    #                         if tag == old_tag:
+    #                             task_for_edit.tags.remove(old_tag)
+    #                             task_for_edit.tags.append(new_tag)
+    #         self.save_to_file_todo('outputs/todo.json')
+    #     except ValueError:
+    #         print("Invalid input. Please enter a valid number.")
+    #
+    def delete_contact(contacts_from_file):
+        try:
+            dict_with_number = contacts_from_file.find_contact()
+            delete_i = int(input("Please choose contact number: "))
+            for key, value in dict_with_number.items():
+                if key == delete_i:
+                    del contacts_from_file.data[value]
+            contacts_from_file.save_contacts_to_json_file("Output/contacts.json")
+        except ValueError:
+            print("Invalid input. Please enter a valid info for delete.")
+
+    def show_all_contacts(contacts_from_file):
+        console = Console()
+
+        table = Table(title="Contact List")
+        table.add_column("Name", style="#5cd15a", justify="center", min_width=10, max_width=50)
+        table.add_column("Phones", style="#5cd15a", justify="center", min_width=10, max_width=50)
+        table.add_column("Birthday", style="#5cd15a", justify="center", min_width=10, max_width=50)
+        table.add_column("Email", style="#5cd15a", justify="center", min_width=10, max_width=50)
+        table.add_column("Address", style="#5cd15a", justify="center", min_width=10, max_width=50)
+        list_contacts = []
+        for key, value in contacts_from_file.data.items():
+            name_c = value.name.value
+            phones = value.phones.value
+            birthday = value.birthday.value
+            email = value.email.value
+            address = value.address.value
+            list_contacts.append((name_c, phones, birthday, email, address))
+        for t in list_contacts:
+            name_c = t[0]
+            phones = ", ".join([str(p) for p in t[1]])
+            birthday = t[2]
+            email = t[3]
+            address = t[4]
+            table.add_row(name_c, phones, birthday, email, address)
+            # table.add_row("-" * 50, "-" * 50, "-" * 50, "-" * 50, "-" * 50, style="#5cd15a")
+        console.print(table)
+
+    def days_to_birthday(self, name_c: Contact):
+        today = datetime.now()
+        if name_c.birthday:
+            birthday_date = datetime.strptime(str(name_c.birthday), '%d.%m.%Y').replace(year=today.year)
+            if today > birthday_date:
+                birthday_date = birthday_date.replace(year=today.year + 1)
+            delta = birthday_date - today
+            return delta.days
+
+
+
         # with open(filename, 'w', newline='') as file:
         #     field_names = ['name', 'phones', 'birthday']
         #     writer = csv.DictWriter(file, fieldnames=field_names)
@@ -60,28 +163,7 @@ class ContactBook(UserDict):
         #         writer.writerow({'name': item.name, 'phones': ', '.join([phone.value for phone in item.phones]),
         #                          'birthday': item.birthday})
 
-    # def find(self, name):
-    #     if name in self.data:
-    #         return self.data[name]
-    #     else:
-    #         return None
 
-    # def find_partial(self):
-    #     self.dict = list(self.data)
-    #     symbols = input('Print letters or numbers to find contact: ')
-    #
-    #     for contact_name in self.dict:
-    #         if symbols in contact_name:
-    #             print(self.data[contact_name])
-    #         else:
-    #             for contact_phones in self.data[contact_name].phones:
-    #                 list_phones = contact_phones.value
-    #                 if symbols in list_phones:
-    #                     print(self.data[contact_name])
-
-    # def delete(self, name):
-    #     if name in self.data:
-    #         del self.data[name]
 
 
 # class AddressBookIterator():
@@ -122,10 +204,10 @@ if __name__ == "__main__":
 
     book.add_contact(user1)
 
-    print(user1.days_to_birthday())
+    print(book.days_to_birthday(user1))
 
-    book.save_contacts_to_json_file("Output/contacts.json")
-    book.load_contacts_from_json_file("Output/contacts.json")
+    # book.save_contacts_to_json_file("Output/contacts.json")
+    # book.load_contacts_from_json_file("Output/contacts.json")
 
     for name, record in book.data.items():
         print(f'show all {record}')

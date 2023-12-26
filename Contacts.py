@@ -111,36 +111,23 @@ class Contact:
         self.phones = Phone(phone)
 
 
-    def edit_phone(self, old_phone, new_phone):
-        is_found_old_phone = False
-        for i, p in enumerate(self.phones):
-            if p.value == old_phone:
-                self.phones[i] = Phone(new_phone)
-                is_found_old_phone = True
-        if not is_found_old_phone:
-            raise ValueError('Phone not found')
-
-    def remove_phone(self, phone):
-        for p in self.phones:
-            if p.value == phone:
-                self.phones.remove(p)
-        return self.phones
-
-    # def find_phone(self, phone):
+    # def edit_phone(self, old_phone, new_phone):
+    #     is_found_old_phone = False
+    #     for i, p in enumerate(self.phones):
+    #         if p.value == old_phone:
+    #             self.phones[i] = Phone(new_phone)
+    #             is_found_old_phone = True
+    #     if not is_found_old_phone:
+    #         raise ValueError('Phone not found')
+    #
+    # def remove_phone(self, phone):
     #     for p in self.phones:
     #         if p.value == phone:
-    #             return p
+    #             self.phones.remove(p)
+    #     return self.phones
 
-    def days_to_birthday(self):
-        today = datetime.now()
-        if self.birthday:
-            birthday_date = datetime.strptime(str(self.birthday), '%d.%m.%Y').replace(year=today.year)
-            if today > birthday_date:
-                birthday_date = birthday_date.replace(year=today.year + 1)
-            delta = birthday_date - today
-            return delta.days
-        else:
-            return None
+
+
 
     def add_birthday(self, value):
         self.birthday = Birthday(value)
