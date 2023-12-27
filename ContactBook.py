@@ -4,7 +4,7 @@ import json
 from rich.table import Table
 from rich.console import Console
 from datetime import datetime
-from  dashtable import data2rst
+from dashtable import data2rst
 
 
 class ContactBook(UserDict):
@@ -50,7 +50,7 @@ class ContactBook(UserDict):
                 address = value["address"]
                 contact_record = Contact(contact, phones, birthday, email, address)
                 loaded_contacts.add_contact(contact_record)
-            print(f'Notes loaded from {filename} successfully.')
+            print(f'Contacts loaded from {filename} successfully.')
             return loaded_contacts
         except Exception as e:
             print(f'Error loading from {filename}: {e}')

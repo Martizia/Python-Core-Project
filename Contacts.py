@@ -105,8 +105,8 @@ class Contact:
         self.email = Email(email) if email else None
         self.address = Address(address) if address else None
 
-    def add_phone(self, phone):
-        self.phones = Phone(phone)
+    # def add_phone(self, phone):
+    #     self.phones = Phone(phone)
 
 
     # def add_birthday(self, value):
