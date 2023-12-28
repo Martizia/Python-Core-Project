@@ -105,13 +105,6 @@ class Contact:
         self.email = Email(email) if email else None
         self.address = Address(address) if address else None
 
-    # def add_phone(self, phone):
-    #     self.phones = Phone(phone)
-
-
-    # def add_birthday(self, value):
-    #     self.birthday = Birthday(value)
-
     def __str__(self):
         return (f"Contact name: {self.name.value}, "
                 f"phones: {', '.join(p for p in self.phones.value)}, "

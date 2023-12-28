@@ -77,7 +77,6 @@ class NoteBook(UserDict):
 
     def show_all_notes(notes_from_file):
         console = Console()
-
         table = Table(title="Notes List", style="#e3db4b", header_style="#4bb0e3", title_style="#e3db4b")
         table.add_column("Title", style="#4bb0e3", min_width=10, max_width=50)
         table.add_column("Text", style="#4bb0e3", min_width=10, max_width=50)
