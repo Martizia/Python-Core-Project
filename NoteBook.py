@@ -94,3 +94,37 @@ class NoteBook(UserDict):
             tags = ", ".join([str(p) for p in t[2]])
             table.add_row(title, text, tags)
         console.print(table)
+
+    def edit_note(notes_from_file):
+        try:
+            dict_with_number = notes_from_file.find_note()
+            choice = int(input("Please choose contact to edit: "))
+            for key, value in dict_with_number.items():
+                if key == choice:
+                    note_for_edit = notes_from_file[value]
+                    table = [["1. Title", "2. Text", "3. Add tag", "4. Edit tag", "5. Delete tag", "6. Return"]]
+                    print(data2rst(table))
+                    part_of_note_to_edit = int(input("Please choose field to edit: "))
+                    if part_of_note_to_edit == 1:
+                        new_title = input("Enter new note title: ")
+                        notes_from_file[new_title] = notes_from_file[note_for_edit.note_title]
+                        del notes_from_file[note_for_edit.note_title]
+                        note_for_edit.note_title = new_title
+                    elif part_of_note_to_edit == 2:
+                        new_text = input("Enter new text for note: ")
+                        note_for_edit.note_text = new_text
+                    elif part_of_note_to_edit == 3:
+                        new_tag = input("Enter new tag to add: ")
+                        note_for_edit.add_tag(new_tag)
+                    elif part_of_note_to_edit == 4:
+                        old_tag = input("Enter tag to edit: ")
+                        new_tag = input("Enter new tag: ")
+                        note_for_edit.edit_tag(old_tag, new_tag)
+                    elif part_of_note_to_edit == 5:
+                        tag_to_delete = input("Enter tag to delete: ")
+                        note_for_edit.delete_tag(tag_to_delete)
+                    elif part_of_note_to_edit == 6:
+                        pass
+            notes_from_file.save_notes_to_json_file("Output/notes.json")
+        except ValueError:
+            print("Invalid input. Please enter a valid number.")

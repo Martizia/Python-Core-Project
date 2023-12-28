@@ -53,7 +53,7 @@ class Bot:
                 self.notes_from_file.add_note(note)
                 self.notes_from_file.save_notes_to_json_file("Output/notes.json")
             elif action_contact == 2:
-                pass
+                self.notes_from_file.edit_note()
             elif action_contact == 3:
                 self.notes_from_file.find_note()
             elif action_contact == 4:
